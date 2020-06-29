@@ -7,14 +7,23 @@ from datetime import datetime
 class BaseModel:
     """ BaseModel of all other classes """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """ initialization of instance attribute
         id : unique id number of instance
         created_at : when an instance is created
         updated_at : when the last modification of an instance
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
+        if kwargs:
+            for key, value in kwargs.items():
+                if key in ('created_at', 'updated_at'):
+                    setattr(self, key, datetime.strptime(value,
+                            "%Y-%m-%dT%H:%M:%S.%f"))
+                elif not key == '__class__':
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """
