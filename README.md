@@ -77,4 +77,4 @@ Commands | Description | Usage
 
 ## Contributors
 
-#### [Moussaddak Meddeb](https://github.com/Moussaddak)
+#### [Moussaddak Meddeb](https://www.linkedin.com/in/moussaddak-meddeb-a64246b6/)
