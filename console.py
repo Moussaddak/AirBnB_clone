@@ -20,8 +20,6 @@ class HBNBCommand(Cmd):
         """ empty line """
         pass
 
-
-
 if __name__ == "__main__":
     ''' Entry point for the loop '''
     HBNBCommand().cmdloop()
