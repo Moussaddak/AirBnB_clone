@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """ BaseModel Class prototype """
+
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -12,18 +14,20 @@ class BaseModel:
         id : unique id number of instance
         created_at : when an instance is created
         updated_at : when the last modification of an instance
+        kwargs : create an instance from a dictionary
         """
         if kwargs:
             for key, value in kwargs.items():
                 if key in ('created_at', 'updated_at'):
-                    setattr(self, key, datetime.strptime(value,
-                            "%Y-%m-%dT%H:%M:%S.%f"))
+                    setattr(self, key, datetime.strptime(
+                        value, "%Y-%m-%dT%H:%M:%S.%f"))
                 elif not key == '__class__':
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """
@@ -35,6 +39,7 @@ class BaseModel:
     def save(self):
         """ updates attribute updated_at with the current datetime"""
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """ returns a dictionary of the instance"""
