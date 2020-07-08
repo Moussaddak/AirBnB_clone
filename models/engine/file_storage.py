@@ -13,6 +13,11 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
+    @classmethod
+    def path(cls):
+        """ return path of JSON file """
+        return cls.__file_path
+
     def all(self):
         """ return dictionary of objects """
         return FileStorage.__objects
@@ -27,7 +32,7 @@ class FileStorage:
         d = {}
         for key, value in FileStorage.__objects.items():
             d[key] = value.to_dict()
-        with open(FileStorage.__file_path, mode='w') as file:
+        with open(FileStorage.__file_path, mode='w', encoding="utf-8") as file:
             file.write(json.dumps(d))
 
     def reload(self):
