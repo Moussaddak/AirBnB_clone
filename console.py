@@ -133,13 +133,10 @@ class HBNBCommand(Cmd):
             for key, value in data_loaded.items():
                 if key == obj_repr:
                     obj = eval(obj_name)(**value.to_dict())
-                    print("here")
-                    print(obj.__dict__)
                     if obj_name in obj.__dict__.keys():
                         obj[obj_name] = obj_value
                     else:
                         setattr(obj, obj_attr, obj_value)
-                    print(obj.__dict__)
                     d = {}
                     for s_key, s_value in data_loaded.items():
                         d[s_key] = s_value.to_dict()
