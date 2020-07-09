@@ -14,14 +14,29 @@ class TestUser(unittest.TestCase):
         data = User()
         self.assertTrue(isinstance(data, BaseModel))
 
-    def test_attributes_User(self):
-        """ Test user attributes """
-
+    def test_email(self):
+        """ Test type name """
         data = User()
-        self.assertTrue("email" in data.__dir__())
-        self.assertTrue("first_name" in data.__dir__())
-        self.assertTrue("last_name" in data.__dir__())
-        self.assertTrue("password" in data.__dir__())
+        name = getattr(data, "email")
+        self.assertIsInstance(name, str)
+
+    def test_first_name(self):
+        """ Test type name """
+        data = User()
+        name = getattr(data, "first_name")
+        self.assertIsInstance(name, str)
+
+    def test_last_name(self):
+        """ Test type last_name """
+        data = User()
+        name = getattr(data, "last_name")
+        self.assertIsInstance(name, str)
+
+    def test_password(self):
+        """ Test type password """
+        data = User()
+        name = getattr(data, "password")
+        self.assertIsInstance(name, str)
 
 
 if __name__ == '__main__':
