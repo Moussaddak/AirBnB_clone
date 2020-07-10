@@ -14,11 +14,11 @@ class TestReview(unittest.TestCase):
         data = Review()
         self.assertTrue(isinstance(data, BaseModel))
 
-    def test_city_id(self):
-        """ Test type city_id """
+    def test_place_id(self):
+        """ Test type place_id """
         data = Review()
-        city_id = getattr(data, "city_id")
-        self.assertIsInstance(city_id, str)
+        place_id = getattr(data, "place_id")
+        self.assertIsInstance(place_id, str)
 
     def test_user_id(self):
         """ Test type user_id """
